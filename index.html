@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokédex</title>
+    <link rel="shortcut icon" href="./src/assets/logoPokebola.png" type="image/x-icon">
+     <!-- Fuentes -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
+     <!-- Link CSS -->
+    <link rel="stylesheet" href="./src/styles/style.css">
+</head>
+<body>
+    <!-- Boton "Volver Arriba" -->
+    <div class="btn-volver-arriba--container" id="btnVolverArriba">
+        <div class="btn-item-arriba">
+            <img src="./src/assets/arrow_right.svg" alt="">
+        </div>
+    </div>
+    <header id="headerContainer">
+        <div class="header--container" id="header">
+            <input type="checkbox" id="btnCheckOptions" class="btn-check">
+            <label for="btnCheckOptions" class="lbl-menu-options">
+                <div class="line one"></div>
+                <div class="line two"></div>
+                <div class="line three"></div>
+            </label>
+            <section class="modal-mobile--container" id="modalMobileContainer">
+                <div class="modal-mobile" id="modalMobile">
+                    <form class="search-mobile">
+                        <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
+                        <input placeholder="Search" type="search" class="input" id="inputSearchMobile">
+                        <input type="submit" class="btnSubmit" id="btnSearchMobile">
+                    </form>
+                    <button class="team-pokemon-modal" id="btnTeamPokemonModal">My Team</button>
+                </div>
+            </section>
+            <img src="./src/assets/LogoPokedex.png" alt="Logo Pokedex" class="logo-pokedex" id="logo--container">
+            <form class="group">
+                <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
+                <input placeholder="Search" type="search" class="input" id="inputSearch">
+                <input type="submit" class="btnSubmit" id="btnSearch">
+            </form>
+            <button class="button-team-pokemon" id="btnTeamPokemon">My Team</button>
+        </div>
+    </header>
+    <main class="sections--container" id="sectionsContainer">
+        <section class="section-title-pagination--container" id="sectionPagination">
+            <!-- <h1>Pokedex</h1> -->
+            <div class="pagination">
+                <button class="buttonPag" id="btnPrev">
+                    <img src="./src/assets/arrow_down.svg" alt="Prev Pokemon" class="prevButton">
+                </button>
+                <div class="textPagination" id="textPagination"></div>
+                <button class="buttonPag" id="btnNext">
+                    <img src="./src/assets/arrow_down.svg" alt="Next Pokemon" class="nextButton">
+                </button>
+            </div>
+        </section>
+        <section class="section-cards--container" id="section-cards--container">
+        </section>
+        <section class="modal--container" id="modalContainer">
+            <section class="catch-pokemon" id="sectionCatchPokemon">
+                <input type="checkbox" id="animationPokeball" class="animation-pokeball">
+                <label for="animationPokeball" class="label-pokeball">
+                    <div class="pokeball">
+                        <div class="detail"></div>
+                    </div>
+                </label>
+            </section>
+            <section class="drop-pokemon--container" id="sectionDropPokemon">
+                <img src="./src/assets/trash.png" alt="Drop Pokemon" class="drop-pokemon">
+            </section>
+            <section class="modalPokemon" id="modalPokemon">
+                <section class="dataGenPokemon">
+                    <div class="idPokemon" id="idPokemonModal"></div>
+                    <div class="imgNamePokemon">
+                        <div class="imgPokemon--container imgModal--container">
+                            <img class="imgPokemon" id="imgPokemonModal">
+                        </div>
+                        <div class="namePokemonModal" id="namePokemonModal"></div>
+                    </div>
+                    <button class="btnCloseModal" id="btnCloseModal">X</button>
+                </section>
+                <section class="dataPokemon--container">
+                    <section class="data--container">
+                        <p class="title" id="titleGeneral">General</p>
+                        <div class="stats">
+                            <div class="colum-stats">
+                                <div class="stat">
+                                    <p>Abilities</p>
+                                </div>
+                                <div class="stat">
+                                    <p class="number-ability">1</p>
+                                    <p id="abilityOne"></p>
+                                </div>
+                                <div class="stat" id="statAbilityTwo">
+                                    <p class="number-ability">2</p>
+                                    <p id="abilityTwo"></p>
+                                </div>
+                            </div>
+                            <div class="colum-stats">
+                                <div class="stat">
+                                    <p>Weight - Height</p>
+                                </div>
+                                <div class="stat">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/847/847396.png" alt="Weight">
+                                    <p id="weight"></p>
+                                </div>
+                                <div class="stat">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/1417/1417225.png" alt="Height">
+                                    <p id="height"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="data--container">
+                        <p class="title" id="titleStats">Base Stats</p>
+                        <div class="stats">
+                            <div class="colum-stats">
+                                <div class="stat">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/220px-Heart_coraz%C3%B3n.svg.png" alt="HP Stat">
+                                    <p id="hp"></p>
+                                </div>
+                                <div class="stat">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/6436/6436195.png" alt="ATK Stat">
+                                    <p id="atk"></p>
+                                </div>
+                                <div class="stat">
+                                    <img src="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/46880/shield-emoji-clipart-md.png" alt="DEF Stat">
+                                    <p id="def"></p>
+                                </div>
+                            </div>
+                            <div class="colum-stats">
+                                <div class="stat">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/6436/6436195.png" alt="ESPECIAL ATK Stat">
+                                    <p id="atkEsp"></p>
+                                </div>
+                                <div class="stat">
+                                    <img src="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/46880/shield-emoji-clipart-md.png" alt="ESPECIAL DEF Stat">
+                                    <p id="defEsp"></p>
+                                </div>
+                                <div class="stat">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/181/181017.png" alt="SPD Stat">
+                                    <p id="spd"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="data--container">
+                        <p class="title" id="titleMoves">Moves</p>
+                        <div class="stats">
+                            <div class="colum-stats">
+                                <div class="stat">
+                                    <p class="number-ability">1</p>
+                                    <p id="moveOne"></p>
+                                </div>
+                                <div class="stat">
+                                    <p class="number-ability">2</p>
+                                    <p id="moveTwo"></p>
+                                </div>
+                                <div class="stat">
+                                    <p class="number-ability">3</p>
+                                    <p id="moveThree"></p>
+                                </div>
+                            </div>
+                            <div class="colum-stats">
+                                <div class="stat">
+                                    <p class="number-ability">4</p>
+                                    <p id="moveFour"></p>
+                                </div>
+                                <div class="stat">
+                                    <p class="number-ability">5</p>
+                                    <p id="moveFive"></p>
+                                </div>
+                                <div class="stat">
+                                    <p class="number-ability">6</p>
+                                    <p id="moveSix"></p>
+                                </div>
+                            </div>
+                    </section>
+                </section>
+            </section>
+        </section>
+        <section class="modal-not-found--container" id="modalNotFound">
+            <div class="modal-not-found">
+                <p class="text-modal-not-found">
+                    The Pokemon has not been found
+                    <!-- El Pokemon no ha sido encontrado -->
+                </p>
+                <button class="button-accept" id="btnModalAccept">
+                    OK
+                </button>
+            </div>
+        </section>
+        <section class="modal-catched--container" id="modalCatched">
+            <div class="modal-catched">
+                <p class="msgCongratulations">
+                    Congratulations!!! You Caught him.
+                </p>
+                <button class="button-accept" id="btnModalCatchAccept">
+                    Yes!!!
+                </button>
+            </div>
+        </section>
+        <section class="modal-catched--container" id="modalDrop">
+            <div class="modal-catched">
+                <p class="msgCongratulations">
+                    I'm fell really bad!
+                </p>
+                <button class="button-accept" id="btnModalDropAccept">
+                    OK
+                </button>
+            </div>
+        </section>
+    </main>
+    
+    <script src="./src/js/main.js" type="module"></script>
+</body>
+</html>
