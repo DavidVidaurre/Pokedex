@@ -81,7 +81,7 @@ const btnTeamPokemonModal = document.getElementById('btnTeamPokemonModal');
 
 const animationPokeball = document.getElementById('animationPokeball');
 const pokeballSound = new Audio();
-pokeballSound.src = './../src/assets/PokeballCatchSound.mp3';
+pokeballSound.src = './src/assets/pokeballCatchSound.mp3';
 
 // MODAL CATCHED POKEMON
 const sectionCatchPokemon = document.getElementById('sectionCatchPokemon');
@@ -262,7 +262,7 @@ const renderCardPokemon = async (valuePokemon) => {
             if (data.types.length == 2){
                 secondType.innerText = data.types[1].type.name;
             }
-            pokemonCatched.src = './../src/assets/LogoPokebola.png';
+            pokemonCatched.src = './src/assets/logoPokebola.png';
             
             sectionCardsContainer.appendChild(cardpokemon);
         }
