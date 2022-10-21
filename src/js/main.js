@@ -399,6 +399,9 @@ btnCloseModal.addEventListener('click', (e) => {
 btnModalAccept.addEventListener('click', (e) => {
     e.preventDefault();
     modalNotFound.style.display = 'none';
+    sectionPagination.style.display = 'block';
+    sectionCardsContainer.style.marginTop = '0';
+    loadPage();
 })
 
 btnModalCatchAccept.addEventListener('click', (e) => {
